@@ -1,0 +1,61 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{34DCD765-D731-49F3-856D-0F08B64F9A6D}|Biblioteca.Web\\Biblioteca.Web.csproj|c:\\users\\ghism\\onedrive\\desktop\\biblioteca_paparesta\\biblioteca.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34DCD765-D731-49F3-856D-0F08B64F9A6D}|Biblioteca.Web\\Biblioteca.Web.csproj|solutionrelative:biblioteca.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34DCD765-D731-49F3-856D-0F08B64F9A6D}|Biblioteca.Web\\Biblioteca.Web.csproj|c:\\users\\ghism\\onedrive\\desktop\\biblioteca_paparesta\\biblioteca.web\\biblioteca.web.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{34DCD765-D731-49F3-856D-0F08B64F9A6D}|Biblioteca.Web\\Biblioteca.Web.csproj|solutionrelative:biblioteca.web\\biblioteca.web.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Biblioteca.Web",
+              "DocumentMoniker": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\Biblioteca.Web\\Biblioteca.Web.csproj",
+              "RelativeDocumentMoniker": "Biblioteca.Web\\Biblioteca.Web.csproj",
+              "ToolTip": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\Biblioteca.Web\\Biblioteca.Web.csproj",
+              "RelativeToolTip": "Biblioteca.Web\\Biblioteca.Web.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-07-26T08:52:23.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\Biblioteca.Web\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Biblioteca.Web\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\Biblioteca.Web\\Controllers\\HomeController.cs*",
+              "RelativeToolTip": "Biblioteca.Web\\Controllers\\HomeController.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T08:48:43.002Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
