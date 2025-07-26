@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Biblioteca.Web")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Biblioteca.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0129e073aa9ff76e84139b91589c19bbf920cb2f")]
-[assembly: System.Reflection.AssemblyProductAttribute("Biblioteca.Web")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Biblioteca.Web")]
+[assembly: System.Reflection.AssemblyProductAttribute("Biblioteca.Data")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Biblioteca.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generato dalla classe WriteCodeFragment di MSBuild.
