@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{60FF289C-AD48-46C8-AAD2-2D12FA3550BE}|Biblioteca.Core\\Biblioteca.Core.csproj|c:\\users\\ghism\\onedrive\\desktop\\biblioteca_paparesta\\biblioteca.core\\biblioteca.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{60FF289C-AD48-46C8-AAD2-2D12FA3550BE}|Biblioteca.Core\\Biblioteca.Core.csproj|solutionrelative:biblioteca.core\\biblioteca.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{34DCD765-D731-49F3-856D-0F08B64F9A6D}|Biblioteca.Web\\Biblioteca.Web.csproj|c:\\users\\ghism\\onedrive\\desktop\\biblioteca_paparesta\\biblioteca.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{34DCD765-D731-49F3-856D-0F08B64F9A6D}|Biblioteca.Web\\Biblioteca.Web.csproj|solutionrelative:biblioteca.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CFB9B089-1BE8-4B57-8799-923D18899616}|Biblioteca.Data\\Biblioteca.Data.csproj|c:\\users\\ghism\\onedrive\\desktop\\biblioteca_paparesta\\biblioteca.data\\autorirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFB9B089-1BE8-4B57-8799-923D18899616}|Biblioteca.Data\\Biblioteca.Data.csproj|solutionrelative:biblioteca.data\\autorirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{34DCD765-D731-49F3-856D-0F08B64F9A6D}|Biblioteca.Web\\Biblioteca.Web.csproj|c:\\users\\ghism\\onedrive\\desktop\\biblioteca_paparesta\\biblioteca.web\\biblioteca.web.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{34DCD765-D731-49F3-856D-0F08B64F9A6D}|Biblioteca.Web\\Biblioteca.Web.csproj|solutionrelative:biblioteca.web\\biblioteca.web.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34DCD765-D731-49F3-856D-0F08B64F9A6D}|Biblioteca.Web\\Biblioteca.Web.csproj|c:\\users\\ghism\\onedrive\\desktop\\biblioteca_paparesta\\biblioteca.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34DCD765-D731-49F3-856D-0F08B64F9A6D}|Biblioteca.Web\\Biblioteca.Web.csproj|solutionrelative:biblioteca.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,21 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Biblioteca.Core",
-              "DocumentMoniker": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\Biblioteca.Core\\Biblioteca.Core.csproj",
-              "RelativeDocumentMoniker": "Biblioteca.Core\\Biblioteca.Core.csproj",
-              "ToolTip": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\Biblioteca.Core\\Biblioteca.Core.csproj",
-              "RelativeToolTip": "Biblioteca.Core\\Biblioteca.Core.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-07-26T09:01:49.77Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -47,7 +34,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "AutoriRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\Biblioteca.Data\\AutoriRepository.cs",
+              "RelativeDocumentMoniker": "Biblioteca.Data\\AutoriRepository.cs",
+              "ToolTip": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\Biblioteca.Data\\AutoriRepository.cs",
+              "RelativeToolTip": "Biblioteca.Data\\AutoriRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T13:18:40.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Biblioteca.Web",
               "DocumentMoniker": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\Biblioteca.Web\\Biblioteca.Web.csproj",
               "RelativeDocumentMoniker": "Biblioteca.Web\\Biblioteca.Web.csproj",
@@ -59,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\ghism\\OneDrive\\Desktop\\Biblioteca_Paparesta\\Biblioteca.Web\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Biblioteca.Web\\Controllers\\HomeController.cs",
@@ -67,8 +67,7 @@
               "RelativeToolTip": "Biblioteca.Web\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-26T08:48:43.002Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-26T08:48:43.002Z"
             }
           ]
         }

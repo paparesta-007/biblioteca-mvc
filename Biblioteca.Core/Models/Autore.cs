@@ -1,6 +1,6 @@
 ﻿namespace Biblioteca.Core.Models;
 
-public class Autori
+public class Autore
 {
     public int IdAutore { get; set; }
     public string Nome { get; set; }

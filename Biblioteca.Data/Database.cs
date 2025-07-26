@@ -2,18 +2,11 @@
 using Microsoft.Data.SqlClient;
 namespace Biblioteca.Data;
 
-public class Database
+public class Database(string connectionString)
 {
-    private readonly string _connectionString;
-
-    public Database(string connectionString)
-    {
-        _connectionString = connectionString;
-    }
-
     public SqlConnection GetConnection()
     {
-        return new SqlConnection(_connectionString);
+        return new SqlConnection(connectionString);
     }
     public SqlDataReader GetExecuteReader(string query, SqlParameter[]? parameters = null)
     {
