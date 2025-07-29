@@ -2,8 +2,8 @@
 
 public class Prestiti
 {
-    public int IdPrestiti { get; set; }
-    public int IdUtente { get; set; }
-    public int IdLibro  { get; set; }
-    public string Data { get; set; }
+    public int IDP { get; set; }
+    public int IDU { get; set; }
+    public int IDL  { get; set; }
+    public DateTime DataPrestito { get; set; }
 }
