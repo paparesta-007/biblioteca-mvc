@@ -3,9 +3,9 @@
 public class Utenti
 {
     public int IdUtente { get; set; }
-    public string DataNascita { get; set; }
-    public int Nome { get; set; }
-    public int Cognome { get; set; }
-    public int Email { get; set; }
+    public DateTime DataNascita { get; set; }
+    public string Nome { get; set; }
+    public string Cognome { get; set; }
+    public string Email { get; set; }
 
 }

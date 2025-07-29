@@ -8,6 +8,7 @@ public class Libro
     public int Anno { get; set; }
     public int IdPaese { get; set; }
     public int IdLingua { get; set; }
-    public string CostoLibro { get; set; }
+    public int IdGenere { get; set; }
+    public decimal CostoLibro { get; set; }
     public int Pagine { get; set; }
 }

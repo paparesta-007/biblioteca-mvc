@@ -13,7 +13,9 @@ public class PrestitiRepository(string connectionString)
     public List<Prestiti> GetAll()
     {
         var prestiti = new List<Prestiti>();
-        string query = "SELECT * FROM Prestiti";
+        var libri = new List<Libro>();
+        var utenti = new List<Utenti>();
+        string query = "SELECT * FROM Prestiti ";
         using var reader = _database.GetExecuteReader(query);
         while (reader.Read())
         {
@@ -23,9 +25,38 @@ public class PrestitiRepository(string connectionString)
                 IDU = reader.GetInt32(1),
                 IDL = reader.GetInt32(2),
                 DataPrestito = reader.GetDateTime(3)
+                
             });
         }
+        
         return prestiti;
+    }
+    public List<PrestitiViewModel> GetPrestitiDettagliati()
+    {
+        var lista = new List<PrestitiViewModel>();
+        const string query = @"
+        SELECT p.IDP, p.DataPrestito, u.Nome, u.Cognome, l.Titolo, l.IdLibro, u.ID
+        FROM Prestiti p
+        JOIN Utenti u ON p.IDU = u.ID
+        JOIN Libri l ON p.IDL = l.IdLibro";
+
+        using var reader = _database.GetExecuteReader(query);
+        while (reader.Read())
+        {
+            lista.Add(new PrestitiViewModel
+            {
+                IdPrestito = reader.GetInt32(0),
+                DataPrestito = reader.GetDateTime(1),
+                NomeUtente = reader.GetString(2),
+                
+                CognomeUtente = reader.GetString(3),
+                TitoloLibro = reader.GetString(4),
+                IdUtente = reader.GetInt32(5),
+                IdLibro = reader.GetInt32(6)
+            });
+        }
+
+        return lista;
     }
 
     public Prestiti? GetById(int id)
@@ -43,6 +74,7 @@ public class PrestitiRepository(string connectionString)
                 DataPrestito = reader.GetDateTime(3)
             };
         }
+        
         return null;
     }
 
