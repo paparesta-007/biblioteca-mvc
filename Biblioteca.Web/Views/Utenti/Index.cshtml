@@ -1,12 +1,20 @@
 ﻿@using Biblioteca.Core.Models
-@model List<Utenti>
+@model List<Utente>
 
 <h2>Tutti gli utenti</h2>
 
 <div class="btn-group">
-    <button class="btn-visualizza">VISUALIZZA</button>
-    <button class="btn-modifica">MODIFICA</button>
-    <button class="btn-elimina">ELIMINA</button>
+    <form asp-action="View">
+        <button type="submit" class="btn-visualizza">VISUALIZZA</button>
+    </form>
+    <form asp-action="Edit" method="get">
+        <input type="hidden" id="idEdit" name="idEdit" value=""/>
+        <button type="submit" class="btn-modifica">MODIFICA</button>
+    </form>
+    <form asp-action="Delete">
+        <input type="hidden" id="allId" name="allId" value=""/>
+        <button type="submit" class="btn-elimina">ELIMINA</button>
+    </form>
 </div>
 
 <table>
@@ -87,28 +95,25 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("Seleziona almeno un utente da eliminare.");
             return;
         }
+
         if (!confirm(`Sei sicuro di eliminare ${ids.length} utente/i?`)) return;
 
-        // Facciamo chiamate POST separate, ma con body JSON
-        (async () => {
-            for (const id of ids) {
-                const res = await fetch('/Utenti/Delete', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ id: parseInt(id) })
-                });
-                if (!res.ok) {
-                    alert(`Errore eliminando utente con ID ${id}`);
-                    return;
-                }
-            }
-            alert("Eliminazioni completate");
-            location.reload();
-        })();
+        document.querySelector('#allId').value = ids.join(',');
     });
 
+
     btnEdit.addEventListener('click', () => {
-        alert('Click edit')
+        const id= getSelectedIds();
+        if (id.length === 0) {
+            alert("Seleziona un utente da modificare.");
+            return;
+        }
+        if (id.length > 1) {
+            alert("Seleziona solo un utente da modificare.");
+            return;
+        }
+        document.querySelector('#idEdit').value = id[0];
+
     })
     btnView.addEventListener('click', () => {
         alert('Click view')

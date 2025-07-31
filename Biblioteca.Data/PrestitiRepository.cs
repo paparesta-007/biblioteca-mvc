@@ -14,7 +14,7 @@ public class PrestitiRepository(string connectionString)
     {
         var prestiti = new List<Prestiti>();
         var libri = new List<Libro>();
-        var utenti = new List<Utenti>();
+        var utenti = new List<Utente>();
         string query = "SELECT * FROM Prestiti ";
         using var reader = _database.GetExecuteReader(query);
         while (reader.Read())

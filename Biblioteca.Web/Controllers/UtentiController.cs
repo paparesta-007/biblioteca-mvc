@@ -29,23 +29,64 @@ public class UtentiController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(Utenti utenti)
+    public IActionResult Create(Utente utente)
     {
         if (ModelState.IsValid)
         {
-            _utenteRepository.Add(utenti);
+            _utenteRepository.Add(utente);
             TempData["Message"] = "Utente creato correttamente";
             return RedirectToAction("Index");
         }
-        return View(utenti);
+        return View(utente);
     }
     
     [HttpPost]
-    public IActionResult Delete(int id)
+    public IActionResult Delete(string allId)
     {
-        _utenteRepository.Delete(id);
-        TempData["Message"] = "Utente eliminato correttamente";
-        return Ok();
+        var idList = allId
+            .Split(',', StringSplitOptions.RemoveEmptyEntries)
+            .Select(id => int.Parse(id)) 
+            .ToList();
+
+        foreach (var id in idList)
+        {
+            _utenteRepository.Delete(id);
+        }
+        TempData["Message"] = $"{idList.Count} utente/i eliminato/i correttamente.";
+        return RedirectToAction("Index");
     }
 
+    [HttpGet]
+    public IActionResult Edit(string idEdit)
+    {
+        ViewBag.Title = "Modifica un utente";
+    
+        if (!int.TryParse(idEdit, out int id))
+        {
+            return NotFound("ID non valido");
+        }
+
+        var utente = _utenteRepository.GetById(id);
+
+        if (utente == null)
+        {
+            return NotFound("Utente non trovato");
+        }
+
+        return View(utente);
+    }
+
+    
+    
+    [HttpPost]
+    public IActionResult Edit(Utente utente)
+    {
+        if (ModelState.IsValid)
+        {
+            _utenteRepository.Update(utente);
+            TempData["Message"] = "Utente modificato correttamente";
+            return RedirectToAction("Index");
+        }
+        return View(utente);
+    }
 }
