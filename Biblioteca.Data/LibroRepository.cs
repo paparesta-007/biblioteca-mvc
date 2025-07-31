@@ -9,15 +9,15 @@ public class LibroRepository(string connectionString)
 {
     private readonly Database _database = new(connectionString);
 
-    public List<Libro> GetAll()
+    public List<LibroViewModel> GetAll()
     {
-        var libri = new List<Libro>();
-        const string query = "SELECT * FROM Libri";
+        var libri = new List<LibroViewModel>();
+        const string query = "SELECT * FROM Libri JOIN Autori ON Libri.IdAutore = Autori.IDa JOIN Lingua ON Libri.IdLingua = Lingua.IDl JOIN Genere ON Libri.IdGenere = Genere.IDG JOIN dbo.Nazioni N on Libri.IdPaese = N.Id_Paese";
 
         using var reader = _database.GetExecuteReader(query);
         while (reader.Read())
         {
-            libri.Add(new Libro
+            libri.Add(new LibroViewModel
             {
                 IdLibro = reader.GetInt32(0),
                 Titolo = reader.GetString(1),
@@ -28,6 +28,11 @@ public class LibroRepository(string connectionString)
                 IdGenere = reader.GetInt32(6),
                 CostoLibro = reader.GetDecimal(7),
                 Pagine = reader.GetInt32(8),
+                NomeAutore = reader.GetString(10),
+                CognomeAutore = reader.GetString(11),
+                NomeLingua = reader.GetString(13),
+                NomeGenere = reader.GetString(15),
+                NomeNazione = reader.GetString(17),
             });
         }
 
