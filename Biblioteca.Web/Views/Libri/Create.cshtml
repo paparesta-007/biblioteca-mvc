@@ -1,0 +1,99 @@
+﻿@using Biblioteca.Core.Models
+
+@model (List<Nazioni> nazioni, List<Lingua> lingue, List<Genere> generi, List<Autore> autori)
+
+<div class="container">
+    <h2>Creazione del Libro</h2>
+    <form method="post" asp-action="Create" asp-controller="Libri">
+        
+        <span>Titolo</span>
+        <input type="text" name="Titolo" required />
+
+        <span>Autore</span>
+        <select name="IdAutore" id="selectAutore" required>
+            <option disabled selected value="">-- Seleziona un autore --</option>
+            @foreach (var a in Model.autori)
+            {
+                <option value="@a.IdAutore">@a.Nome @a.Cognome</option>
+            }
+        </select>
+
+        <span>Anno</span>
+        <input type="number" name="Anno" required />
+
+        <span>Lingua</span>
+        <select name="IdLingua" id="selectLingua" required>
+            <option disabled selected value="">-- Seleziona una lingua --</option>
+            @foreach (var l in Model.lingue)
+            {
+                <option value="@l.IdLingua">@l.Nome</option>
+            }
+        </select>
+
+        <span>Genere</span>
+        <select name="IdGenere" id="selectGenere" required>
+            <option disabled selected value="">-- Seleziona un genere --</option>
+            @foreach (var g in Model.generi)
+            {
+                <option value="@g.IdGenere">@g.Descrizione</option>
+            }
+        </select>
+
+        <span>Paese</span>
+        <select name="IdPaese" id="selectNazione" required>
+            <option disabled selected value="">-- Seleziona un paese --</option>
+            @foreach (var n in Model.nazioni)
+            {
+                <option value="@n.IdPaese">@n.Nome</option>
+            }
+        </select>
+
+        <span>Costo</span>
+        <input type="number" step="0.01" name="CostoLibro" required />
+
+        <span>Pagine</span>
+        <input type="number" name="Pagine" />
+
+        <input type="submit" value="Crea libro" />
+    </form>
+</div>
+
+<style>
+    form {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    form input, select {
+        margin: 10px 0;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: transparent;
+        border: 1px solid #17313E;
+    }
+    form span {
+        font-weight: bold;
+        color: #17313E;
+    }
+    input[type=submit] {
+        background-color: #17313E;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .danger {
+        color: #fa3131;
+    }
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    @@media screen and (max-width: 768px) {
+        form {
+            width: 100%;
+        }
+    }
+</style>

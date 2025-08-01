@@ -1,8 +1,9 @@
 ﻿@model Biblioteca.Core.Models.Utente
 
 <div class="container">
+    <h2>Modifica dell'utente</h2>
     <form method="post" asp-action="Edit" asp-controller="Utenti">
-        <input type="hidden" name="IdUtente" value="@Model.IdUtente" />
+        <input type="hidden" name="IdUtente" value="@Model.IdUtente"/>
         <span>Nome</span>
         <input type="text" name="Nome" value="@Model.Nome" required/>
 
@@ -25,8 +26,10 @@
         display: flex;
         flex-direction: column;
     }
-    form input {
+    form input,select {
         margin: 10px 0;
+        padding: 5px;
+        border-radius: 5px;
         background-color: transparent;
         border: 1px solid #17313E;
     }
@@ -42,6 +45,7 @@
     .container {
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }

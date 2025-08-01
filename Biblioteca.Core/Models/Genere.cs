@@ -3,5 +3,5 @@
 public class Genere
 {
     public int IdGenere { get; set; }
-    public string Nome { get; set; }
+    public string Descrizione { get; set; }
 }

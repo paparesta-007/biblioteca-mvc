@@ -47,7 +47,18 @@
             <td>@u.NomeLingua</td>
             <td>@u.NomeGenere</td>
             <td>@u.NomeNazione</td>
-            
+            @if (@u.IsInPrestito)
+            {
+                <td><span class="in-prestito">In prestito</span></td>
+            }
+            else if (@u.IsPrenotato)
+            {
+                <td><span class="prenotato">Prenotato</span></td>           
+            }
+            else
+            {
+                <td><span class="disponibile">Disponibile</span></td>
+            }
         </tr>
     }
     </tbody>
@@ -106,11 +117,11 @@ document.addEventListener('DOMContentLoaded', function() {
     btnDelete.addEventListener('click', () => {
         const ids = getSelectedIds();
         if (ids.length === 0) {
-            alert("Seleziona almeno un utente da eliminare.");
+            alert("Seleziona almeno un libro da eliminare.");
             return;
         }
 
-        if (!confirm(`Sei sicuro di eliminare ${ids.length} utente/i?`)) return;
+        if (!confirm(`Sei sicuro di eliminare ${ids.length} libro/i?`)) return;
 
         document.querySelector('#allId').value = ids.join(',');
     });
@@ -224,5 +235,27 @@ document.addEventListener('DOMContentLoaded', function() {
         background-color: #373b3d;
         border: 1px solid #1e1f1f;
         cursor: not-allowed;
+    }
+
+    .in-prestito {
+        color: #fc5757;
+    }
+
+    .disponibile {
+        color: #55a855;
+    }
+    .in-prestito,.disponibile, .prenotato{
+        padding: 10px;
+        border-radius: 50px;
+        color: #ffffff;
+    }
+    .in-prestito{
+        background-color: #7e48ce;
+    }
+    .disponibile{
+        background-color: #55a855;
+    }
+    .prenotato{
+        background-color: #fcc857;
     }
 </style>

@@ -1,0 +1,85 @@
+﻿using System;
+using System.Collections.Generic;
+using Biblioteca.Core.Models;
+using Microsoft.Data.SqlClient;
+
+namespace Biblioteca.Data;
+
+public class PrenotazioneRepository(string connectionString)
+{
+    private readonly Database _database = new(connectionString);
+
+    public List<Prenotazioni> GetAll()
+    {
+        var prenotazioni = new List<Prenotazioni>();
+
+        string query = "SELECT * FROM Prenotazioni ";
+        using var reader = _database.GetExecuteReader(query);
+        while (reader.Read())
+        {
+            prenotazioni.Add(new Prenotazioni
+            {
+                IdPrenotazioni = reader.GetInt32(0),
+                IdUtente = reader.GetInt32(1),
+                IdLibro = reader.GetInt32(2),
+                DataPrenotazione = reader.GetDateTime(3)
+                
+            });
+        }
+        
+        return prenotazioni;
+    }
+   
+
+    public Prenotazioni? GetById(int id)
+    {
+        string query = "SELECT * FROM Prenotazioni WHERE IDP = @id";
+        var parameters = new[] { new SqlParameter("@id", id) };
+        using var reader = _database.GetExecuteReader(query, parameters);
+        if (reader.Read())
+        {
+            return new Prenotazioni
+            {
+                IdPrenotazioni = reader.GetInt32(0),
+                IdUtente = reader.GetInt32(1),
+                IdLibro = reader.GetInt32(2),
+                DataPrenotazione = reader.GetDateTime(3)
+            };
+        }
+        
+        return null;
+    }
+
+    public int Add(Prenotazioni prenotazioni)
+    {
+        string query = "INSERT INTO Prenotazioni (IDU, IDL, DataPrestito) VALUES (@IDU, @IDL, @DataPrestito)";
+       
+        var parameters = new[]
+        {
+            new SqlParameter("@IDU", prenotazioni.IdUtente),
+            new SqlParameter("@IDL", prenotazioni.IdLibro),
+            new SqlParameter("@DataPrestito", DateTime.Now) // <-- così va bene!
+        };
+        return _database.ExecuteNonQuery(query, parameters);
+    }
+
+    public int Update(Prenotazioni prenotazioni)
+    {
+        string query = "UPDATE Prenotazioni SET IDU = @IDU, IDL = @IDL, DataPrestito = @DataPrestito WHERE IDP = @IDP";
+        var parameters = new[]
+        {
+            new SqlParameter("@IDU", prenotazioni.IdUtente),
+            new SqlParameter("@IDL", prenotazioni.IdLibro),
+            new SqlParameter("@DataPrestito", prenotazioni.DataPrenotazione),
+            new SqlParameter("@IDP", prenotazioni.IdPrenotazioni)
+        };
+        return _database.ExecuteNonQuery(query, parameters);
+    }
+
+    public int Delete(int id)
+    {
+        string query = "DELETE FROM Prenotazioni WHERE IDP = @id";
+        var parameters = new[] { new SqlParameter("@id", id) };
+        return _database.ExecuteNonQuery(query, parameters);
+    }
+}
