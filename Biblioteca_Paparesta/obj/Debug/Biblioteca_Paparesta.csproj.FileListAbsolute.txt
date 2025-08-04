@@ -1,0 +1,2 @@
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca_Paparesta\obj\Debug\Biblioteca_Paparesta.csproj.AssemblyReference.cache
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca_Paparesta\obj\Debug\Biblioteca_Paparesta.csproj.CoreCompileInputs.cache

@@ -1,0 +1,16 @@
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\bin\Debug\net9.0\Biblioteca.Data.deps.json
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\bin\Debug\net9.0\Biblioteca.Data.dll
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\bin\Debug\net9.0\Biblioteca.Data.pdb
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\bin\Debug\net9.0\Biblioteca.Core.dll
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\bin\Debug\net9.0\Biblioteca.Core.pdb
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\obj\Debug\net9.0\Biblioteca.Data.csproj.AssemblyReference.cache
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\obj\Debug\net9.0\Biblioteca.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\obj\Debug\net9.0\Biblioteca.Data.AssemblyInfoInputs.cache
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\obj\Debug\net9.0\Biblioteca.Data.AssemblyInfo.cs
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\obj\Debug\net9.0\Biblioteca.Data.csproj.CoreCompileInputs.cache
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\obj\Debug\net9.0\Bibliote.033E8769.Up2Date
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\obj\Debug\net9.0\Biblioteca.Data.dll
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\obj\Debug\net9.0\refint\Biblioteca.Data.dll
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\obj\Debug\net9.0\Biblioteca.Data.pdb
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\obj\Debug\net9.0\ref\Biblioteca.Data.dll
+C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Data\obj\Debug\net9.0\Biblioteca.Data.sourcelink.json

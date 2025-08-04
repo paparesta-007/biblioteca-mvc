@@ -1,0 +1,57 @@
+﻿@model Biblioteca.Core.Models.Utente
+
+<div class="container">
+    <h2>Modifica dell'utente</h2>
+    <form method="post" asp-action="Edit" asp-controller="Utenti">
+        <input type="hidden" name="IdUtente" value="@Model.IdUtente"/>
+        <span>Nome</span>
+        <input type="text" name="Nome" value="@Model.Nome" required/>
+
+        <span>Cognome</span>
+        <input type="text" name="Cognome" value="@Model.Cognome" required/>
+
+        <span>Email</span>
+        <input type="text" name="Email" value="@Model.Email" required/>
+
+        <span>Data di nascita</span>
+        <input type="date" name="DataNascita" value="@Model.DataNascita.ToString("yyyy-MM-dd")" required/>
+
+        <input type="submit" value="Modifica"/>
+    </form>
+</div>
+
+<style>
+    form {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    form input,select {
+        margin: 10px 0;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: transparent;
+        border: 1px solid #17313E;
+    }
+    form span {
+        font-weight: bold;
+        color: #17313E;
+    }
+    input[type=submit] {
+        background-color: #17313E;
+        color: white;
+        padding: 10px;
+    }
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    @@media screen and (max-width: 768px) {
+        form {
+            width: 100%;
+        }
+    }
+</style>

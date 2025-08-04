@@ -1,0 +1,73 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Biblioteca.Web
+build_property.RootNamespace = Biblioteca.Web
+build_property.ProjectDir = C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Web\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\ghism\OneDrive\Desktop\Biblioteca_Paparesta\Biblioteca.Web
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/GestioneScambi/AggiungiPrestito.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvbmVTY2FtYmlcQWdnaXVuZ2lQcmVzdGl0by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/GestioneScambi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvbmVTY2FtYmlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/Libri/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmlcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/Libri/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmlcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/Libri/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/Utenti/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRpXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/Utenti/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRpXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/Utenti/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRpXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/Utenti/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRlbnRpXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghism/OneDrive/Desktop/Biblioteca_Paparesta/Biblioteca.Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

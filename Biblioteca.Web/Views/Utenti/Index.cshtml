@@ -1,0 +1,214 @@
+﻿@using Biblioteca.Core.Models
+@model List<Utente>
+
+<h2>Tutti gli utenti</h2>
+
+<div class="btn-group">
+    <form asp-action="View">
+        <button type="submit" class="btn-visualizza">VISUALIZZA</button>
+    </form>
+    <form asp-action="Edit" method="get">
+        <input type="hidden" id="idEdit" name="idEdit" value=""/>
+        <button type="submit" class="btn-modifica">MODIFICA</button>
+    </form>
+    <form asp-action="Delete">
+        <input type="hidden" id="allId" name="allId" value=""/>
+        <button type="submit" class="btn-elimina">ELIMINA</button>
+    </form>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th><input type="checkbox" id="checkAll"/></th>
+        <th>ID</th><th>Nome</th><th>Cognome</th><th>Email</th><th>Data di nascita</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td><input type="checkbox" class="check" value="@u.IdUtente"/></td>
+            <td>@u.IdUtente</td>
+            <td>@u.Nome</td>
+            <td>@u.Cognome</td>
+            <td>@u.Email</td>
+            <td>@u.DataNascita.ToString("D")</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const checkAll   = document.getElementById('checkAll');
+    const checkboxes = Array.from(document.querySelectorAll('.check'));
+    const btnView    = document.querySelector('.btn-visualizza');
+    const btnEdit    = document.querySelector('.btn-modifica');
+    const btnDelete  = document.querySelector('.btn-elimina');
+
+    function getSelectedIds() {
+        return checkboxes.filter(cb => cb.checked).map(cb => cb.value);
+    }
+
+    function updateBtnGroupVisibility() {
+        const count = getSelectedIds().length;
+
+        // Disabilitiamo tutto di default
+        btnView.disabled   = true;
+        btnEdit.disabled   = true;
+        btnDelete.disabled = true;
+        
+
+        if (count === 1) {
+            btnView.disabled   = false;
+            btnEdit.disabled   = false;
+            btnDelete.disabled = false;
+        }
+        else if (count > 1) {
+            // solo elimina
+            btnDelete.disabled = false;
+        }
+        // se count == 0 restano tutti disabilitati
+    }
+
+    // Stato iniziale
+    updateBtnGroupVisibility();
+
+    // "Check all"
+    checkAll.addEventListener('change', () => {
+        checkboxes.forEach(cb => cb.checked = checkAll.checked);
+        updateBtnGroupVisibility();
+    });
+
+    // Singole checkbox
+    checkboxes.forEach(cb => {
+        cb.addEventListener('change', () => {
+            checkAll.checked = checkboxes.every(c => c.checked);
+            updateBtnGroupVisibility();
+        });
+    });
+
+    btnDelete.addEventListener('click', () => {
+        const ids = getSelectedIds();
+        if (ids.length === 0) {
+            alert("Seleziona almeno un utente da eliminare.");
+            return;
+        }
+
+        if (!confirm(`Sei sicuro di eliminare ${ids.length} utente/i?`)) return;
+
+        document.querySelector('#allId').value = ids.join(',');
+    });
+
+
+    btnEdit.addEventListener('click', () => {
+        const id= getSelectedIds();
+        if (id.length === 0) {
+            alert("Seleziona un utente da modificare.");
+            return;
+        }
+        if (id.length > 1) {
+            alert("Seleziona solo un utente da modificare.");
+            return;
+        }
+        document.querySelector('#idEdit').value = id[0];
+
+    })
+    btnView.addEventListener('click', () => {
+        alert('Click view')
+    })
+});
+</script>
+
+<style>
+    body{
+        transition: all 0.3s;
+    }
+    table, th, td {
+        border-radius: 5px;
+        
+    }
+    .text-danger{
+        color: #f62525 !important; 
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        padding: 15px;
+        border-top: 1px solid #C5B0CD;
+        border-bottom: 1px solid #C5B0CD;
+    }
+    th {
+        background-color: #415E72;
+        color: white;
+    }
+    tr:not(:first-child):hover {
+        transition: all 0.3s;
+        background-color: #C5B0CD;
+    }
+    .btn-group{
+        margin: 10px 0;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        border: 1px solid #9f9d9d;
+        transition: all 0.3s;
+    }
+    .btn-visualizza,.btn-modifica,.btn-elimina,.btn-aggiungi{
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: transparent;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+    }
+    .btn-elimina{
+        background-color: #fc5757;
+        border: 1px solid #ce3232;
+        
+    }
+    .btn-aggiungi{
+        background-color: #55a855;
+        border: 1px solid #4a7a4a;
+    }
+    .btn-modifica{
+        background-color: #415E72;
+        border: 1px solid #354c5e;
+    }
+    .btn-visualizza{
+        background-color: #415E72;
+        border: 1px solid #354c5e;
+    }
+    .btn-modifica{
+        background-color: #b6ae53;
+        border: 1px solid #918549;
+    }
+    .popup{
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+        border: 1px solid #C5B0CD;
+        color: #17313E;
+    }
+    .btn-elimina:disabled{
+        background-color: #795656;
+        border: 1px solid #483b3b;
+        cursor: not-allowed;
+    }
+    .btn-modifica:disabled{
+        background-color: #858061;
+        border: 1px solid #5e5b52;
+        cursor: not-allowed;
+    }
+    .btn-visualizza:disabled{
+        background-color: #373b3d;
+        border: 1px solid #1e1f1f;
+        cursor: not-allowed;
+    }
+</style>

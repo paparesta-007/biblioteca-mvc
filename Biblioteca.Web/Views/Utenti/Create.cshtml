@@ -1,0 +1,47 @@
+﻿@model Biblioteca.Core.Models.Utente
+<div class="container">
+    
+    <form method="post" asp-action="Create">
+        <span>Nome</span>
+        <input type="text" name="Nome" required/>
+        <span>Cognome</span>
+        <input type="text" name="Cognome" required/>
+        <span>Email</span>
+        <input type="text" name="Email" required/>
+        <span>Data di nascita</span>
+        <input type="date" name="DataNascita" required/>
+        <input type="submit" value="Registrati"/>
+    </form>
+</div>
+<style>
+    form{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    form input{
+        margin: 10px 0;
+        background-color: transparent;
+        border: 1px solid #17313E;
+    }
+    form span{
+        font-weight: bold;
+        color: #17313E;
+    }
+    input[type=submit]{
+        background-color: #17313E;
+        color: white;
+        padding: 10px;
+    }
+    .container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    @@media screen and (max-width: 768px){
+        form{
+            width: 100%;
+        }
+    }
+</style>
