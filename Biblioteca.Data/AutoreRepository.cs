@@ -5,7 +5,7 @@ using Biblioteca.Core.Models;
 
 namespace Biblioteca.Data;
 
-public class AutoreRepository(string connectionString)
+public class AutoreRepository(string? connectionString)
 {
     private Database _database = new(connectionString);
 

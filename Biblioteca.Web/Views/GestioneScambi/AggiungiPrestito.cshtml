@@ -1,0 +1,148 @@
+﻿@using Biblioteca.Core.Models;
+@model (List<LibroViewModel> libri, List<Utente> utenti)
+
+<div class="container">
+    <form method="post" asp-action="AggiungiPrestito">
+        <div class="filters">
+            <div>
+                <input type="hidden" id="IdLibro" name="idLibro" />
+                <input type="text" id="inputLibro" class="search" placeholder="Search libri"/>
+                <div class="records" id="recordLibri">
+                    @foreach (var libro in Model.libri)
+                    {
+                        <div class="record libro" data-testo="@libro.Titolo.ToLower() @libro.IdLibro">
+                            <div class="record-title">
+                                @libro.Titolo <span class="spanId">(@libro.IdLibro)</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div>
+                <input type="hidden" id="IdUtente" name="idUtente" />
+                <input type="text" id="inputUtente" class="search" placeholder="Search utenti"/>
+                <div class="records" id="recordUtenti">
+                    @foreach (var utente in Model.utenti)
+                    {
+                        <div class="record utente" data-testo="@utente.Cognome.ToLower() @utente.Nome.ToLower() @utente.IdUtente">
+                            <div class="record-title">
+                                @utente.Cognome @utente.Nome <span class="spanId">(@utente.IdUtente)</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <input type="submit" class="submit" value="Aggiungi prestito"/>
+    </form>
+    
+</div>
+<script>
+    function setupFiltro(inputId, recordClass, hiddenId) {
+        const input = document.getElementById(inputId);
+        const records = document.querySelectorAll("." + recordClass);
+        const hidden = document.getElementById(hiddenId);
+
+        input.addEventListener("input", function () {
+            const filtro = input.value.toLowerCase();
+            records.forEach(el => {
+                const testo = el.getAttribute("data-testo");
+                el.style.display = testo.includes(filtro) ? "" : "none";
+            });
+        });
+
+        records.forEach(record => {
+            record.addEventListener("click", () => {
+                const title = record.querySelector(".record-title").innerText;
+                const idMatch = title.match(/\((\d+)\)$/); // estrae l'ID tra parentesi
+                const id = idMatch ? idMatch[1] : null;
+                if (id) {
+                    input.value = title;
+                    hidden.value = id;
+                }
+            });
+        });
+    }
+
+    setupFiltro("inputLibro", "libro", "IdLibro");
+    setupFiltro("inputUtente", "utente", "IdUtente");
+</script>
+
+<style>
+    form {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    form input, select {
+        margin: 10px 0;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: transparent;
+        border: 1px solid #17313E;
+    }
+    form  {
+        width: 100%;
+        color: #17313E;
+        
+    }
+    .filters{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+    .filters > div {
+        width: 50%;
+    }
+    .submit{
+        width: 100%;
+        background-color: #17313E;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        
+    }
+    .search {
+        width: 100%;
+    }
+    .record-title {
+        font-size: 14px;
+    }
+    .spanId{
+        font-weight: bold;
+    }
+    .records{
+        height: 300px;
+        overflow-y: scroll;
+        margin-bottom: 10px;
+    }
+    input[type=submit] {
+        background-color: #17313E;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .danger {
+        color: #fa3131;
+    }
+    .record{
+        border-bottom: 1px solid #9f9f9f;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    @@media screen and (max-width: 768px) {
+        form {
+            width: 100%;
+        }
+    }
+</style>

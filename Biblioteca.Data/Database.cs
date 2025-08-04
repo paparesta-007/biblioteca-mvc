@@ -2,7 +2,7 @@
 using Microsoft.Data.SqlClient;
 namespace Biblioteca.Data;
 
-public class Database(string connectionString)
+public class Database(string? connectionString)
 {
     public SqlConnection GetConnection()
     {

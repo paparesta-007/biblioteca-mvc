@@ -6,7 +6,7 @@ using Biblioteca.Core.Models;
 
 namespace Biblioteca.Data;
 
-public class UtenteRepository(string connectionString)
+public class UtenteRepository(string? connectionString)
 {
     private readonly Database _database = new(connectionString);
 

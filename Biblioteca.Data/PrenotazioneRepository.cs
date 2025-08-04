@@ -5,7 +5,7 @@ using Microsoft.Data.SqlClient;
 
 namespace Biblioteca.Data;
 
-public class PrenotazioneRepository(string connectionString)
+public class PrenotazioneRepository(string? connectionString)
 {
     private readonly Database _database = new(connectionString);
 
@@ -33,7 +33,7 @@ public class PrenotazioneRepository(string connectionString)
 
     public Prenotazioni? GetById(int id)
     {
-        string query = "SELECT * FROM Prenotazioni WHERE IDP = @id";
+        string query = "SELECT * FROM Prenotazioni WHERE IDL = @id";
         var parameters = new[] { new SqlParameter("@id", id) };
         using var reader = _database.GetExecuteReader(query, parameters);
         if (reader.Read())
@@ -50,6 +50,17 @@ public class PrenotazioneRepository(string connectionString)
         return null;
     }
 
+    public int TotalePrenotazioni(int idUtente)
+    {
+        string query = "SELECT COUNT(*) FROM Prenotazioni WHERE IDU = @id";
+        var parameters = new[] { new SqlParameter("@id", idUtente) };
+        using var reader = _database.GetExecuteReader(query, parameters);
+        if (reader.Read())
+        {
+            return reader.GetInt32(0);
+        }
+        return 0;
+    }
     public int Add(Prenotazioni prenotazioni)
     {
         string query = "INSERT INTO Prenotazioni (IDU, IDL, DataPrestito) VALUES (@IDU, @IDL, @DataPrestito)";
@@ -78,7 +89,7 @@ public class PrenotazioneRepository(string connectionString)
 
     public int Delete(int id)
     {
-        string query = "DELETE FROM Prenotazioni WHERE IDP = @id";
+        string query = "DELETE FROM Prenotazioni WHERE IDL = @id";
         var parameters = new[] { new SqlParameter("@id", id) };
         return _database.ExecuteNonQuery(query, parameters);
     }

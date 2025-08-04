@@ -6,7 +6,7 @@ using Biblioteca.Core.Models;
 
 namespace Biblioteca.Data;
 
-public class PrestitiRepository(string connectionString)
+public class PrestitiRepository(string? connectionString)
 {
     private readonly Database _database = new(connectionString);
 
@@ -30,6 +30,17 @@ public class PrestitiRepository(string connectionString)
         }
         
         return prestiti;
+    }
+    public int TotalePrestiti(int idUtente)
+    {
+        string query = "SELECT COUNT(*) FROM Prestiti WHERE IDU = @id";
+        var parameters = new[] { new SqlParameter("@id", idUtente) };
+        using var reader = _database.GetExecuteReader(query, parameters);
+        if (reader.Read())
+        {
+            return reader.GetInt32(0);
+        }
+        return 0;
     }
     public List<PrestitiViewModel> GetPrestitiDettagliati()
     {
@@ -86,7 +97,7 @@ public class PrestitiRepository(string connectionString)
         {
             new SqlParameter("@IDU", prestiti.IDU),
             new SqlParameter("@IDL", prestiti.IDL),
-            new SqlParameter("@DataPrestito", DateTime.Now) // <-- così va bene!
+            new SqlParameter("@DataPrestito", prestiti.DataPrestito) // <-- così va bene!
         };
         return _database.ExecuteNonQuery(query, parameters);
     }
