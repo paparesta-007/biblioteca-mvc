@@ -63,13 +63,13 @@ public class PrenotazioneRepository(string? connectionString)
     }
     public int Add(Prenotazioni prenotazioni)
     {
-        string query = "INSERT INTO Prenotazioni (IDU, IDL, DataPrestito) VALUES (@IDU, @IDL, @DataPrestito)";
+        string query = "INSERT INTO Prenotazioni (IDU, IDL, DataPrenot) VALUES (@IDU, @IDL, @DataPrenot)";
        
         var parameters = new[]
         {
             new SqlParameter("@IDU", prenotazioni.IdUtente),
             new SqlParameter("@IDL", prenotazioni.IdLibro),
-            new SqlParameter("@DataPrestito", DateTime.Now) // <-- così va bene!
+            new SqlParameter("@DataPrenot", DateTime.Now) // <-- così va bene!
         };
         return _database.ExecuteNonQuery(query, parameters);
     }

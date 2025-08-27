@@ -41,9 +41,24 @@ public class GestioneScambiController : Controller
         // Check if the book is already booked
         var prestito = _prestitiRepository.GetById(idLibro);
         if (prestito!=null)
-        {
-            // Exist
-            return Content("Libro già in prestito");
+        { 
+            var prenotato=_prenotazioneRepository.GetById(idLibro);
+            if (prenotato != null)
+            {
+                return Content("Libro in prestito e già prenotato");
+            }
+            else
+            {
+                var prenotazione = new Prenotazioni()
+                {
+                    IdLibro = idLibro,
+                    IdUtente = idUtente,
+                    DataPrenotazione = DateTime.Now,
+                };
+                _prenotazioneRepository.Add(prenotazione);
+                return Content("Libro aggiungi prenotato");
+            }
+            
         }
         else
         {
