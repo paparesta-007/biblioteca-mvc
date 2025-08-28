@@ -1,92 +1,112 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Biblioteca Paparesta - @ViewBag.Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+          integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
 </head>
 <body class="">
-    <nav class="navbar navbar-expand-lg  mb-4">
-       
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/"><i class="bi bi-book-fill"></i> Biblioteca</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-               
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-bookshelf"></i> Gestisci libri
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-action="Index" asp-controller="Libri">Visualizza tutti i libri</a></li>
-                                <li><a class="dropdown-item" asp-action="Create" asp-controller="Libri">Aggiungi libro</a></li>
-                                <li><a class="dropdown-item" href="#">Elimina libro</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <div class="dash-line"></div>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <button id="btn-utenti" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-people"></i> Gestisci utenti
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-controller="Utenti" asp-action="Index"><i class="bi bi-person-lines-fill"></i> Visualizza utenti</a></li>
-                                <li><a class="dropdown-item" asp-controller="Utenti" asp-action="Create"><i class="bi bi-person-plus-fill"></i> Aggiungi utente</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-up"></i> Modifica utente</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-dash"></i> Elimina utente</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <button id="btn-prestiti-prenotazioni" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-people"></i> Gestisci prestiti e prenotazioni
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-controller="GestioneScambi" asp-action="Index"><i class="bi bi-person-lines-fill"></i> Visualizza prestito</a></li>
-                                <li><a class="dropdown-item" asp-controller="GestioneScambi" asp-action="AggiungiPrestito"><i class="bi bi-person-plus-fill"></i> Aggiungi prestito</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-up"></i> Modifica prestito</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-dash"></i> Elimina utente</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div id="clock" class="nav-item"></div>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg  mb-4">
 
-    <div class="container">
-        @RenderBody()
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><i class="bi bi-book-fill"></i> Biblioteca</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <i class="bi bi-bookshelf"></i> Gestisci libri
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-action="Index" asp-controller="Libri">Visualizza tutti i
+                                    libri</a></li>
+                            <li><a class="dropdown-item" asp-action="Create" asp-controller="Libri">Aggiungi libro</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Elimina libro</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <div class="dash-line"></div>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button id="btn-utenti" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <i class="bi bi-people"></i> Gestisci utenti
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="Utenti" asp-action="Index"><i
+                                        class="bi bi-person-lines-fill"></i> Visualizza utenti</a></li>
+                            <li><a class="dropdown-item" asp-controller="Utenti" asp-action="Create"><i
+                                        class="bi bi-person-plus-fill"></i> Aggiungi utente</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-up"></i> Modifica
+                                    utente</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-dash"></i> Elimina utente</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button id="btn-prestiti-prenotazioni" class="btn dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-people"></i> Gestisci prestiti e prenotazioni
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="GestioneScambi" asp-action="Index"><i
+                                        class="bi bi-person-lines-fill"></i> Visualizza prestito</a></li>
+                            <li><a class="dropdown-item" asp-controller="GestioneScambi"
+                                   asp-action="AggiungiPrestito"><i class="bi bi-person-plus-fill"></i> Aggiungi
+                                    prestito</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-up"></i> Modifica prestito</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-dash"></i> Elimina utente</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="clock" class="nav-item"></div>
     </div>
+</nav>
+
+<div class="container">
+    @RenderBody()
+</div>
 </body>
 </html>
 <style>
-    nav{
-        
+    nav {
+
         border-bottom: 1px solid #9f9d9d;
     }
-    body{
+
+    body {
         background-color: #F3E2D4;
     }
-    
-    .dropdown button{
+
+    .dropdown button {
         font-family: "Times New Roman", Times, serif !important;
         font-size: 1.3em !important;
         margin: 0 10px !important;
         color: #17313E !important;
     }
-    .dash-line{
+
+    .dash-line {
         border-left: 1px solid black;
     }
-    #clock{
+
+    #clock {
         position: absolute;
         right: 10px;
         top: 10px;
@@ -113,6 +133,6 @@
         setInterval(() => {
             clock.innerHTML = new Date().toLocaleString();
 
-        },1000)
+        }, 1000)
     })
 </script>

@@ -1,6 +1,6 @@
 ﻿@model Biblioteca.Core.Models.Utente
 <div class="container">
-    
+
     <form method="post" asp-action="Create">
         <span>Nome</span>
         <input type="text" name="Nome" required/>
@@ -14,35 +14,40 @@
     </form>
 </div>
 <style>
-    form{
+    form {
         width: 50%;
         display: flex;
         flex-direction: column;
     }
-    form input{
+
+    form input {
         margin: 10px 0;
         padding: 5px;
         border-radius: 5px;
         background-color: transparent;
         border: 1px solid #17313E;
     }
-    form span{
+
+    form span {
         font-weight: bold;
         color: #17313E;
     }
-    input[type=submit]{
+
+    input[type=submit] {
         background-color: #17313E;
         color: white;
         padding: 10px;
     }
-    .container{
+
+    .container {
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    @@media screen and (max-width: 768px){
-        form{
+
+    @@media screen and (max-width: 768px) {
+        form {
             width: 100%;
         }
     }

@@ -1,5 +1,4 @@
-﻿@using Biblioteca.Core.Models
-@model List<LibroViewModel>
+﻿@model List<Biblioteca.Core.Models.LibroViewModel>
 
 <h2>Tutti i libri</h2>
 
@@ -47,13 +46,13 @@
             <td>@u.NomeLingua</td>
             <td>@u.NomeGenere</td>
             <td>@u.NomeNazione</td>
-            @if (@u.IsInPrestito)
+            @if (u.IsInPrestito)
             {
                 <td><span class="in-prestito">In prestito</span></td>
             }
-            else if (@u.IsPrenotato)
+            else if (u.IsPrenotato)
             {
-                <td><span class="prenotato">Prenotato</span></td>           
+                <td><span class="prenotato">Prenotato</span></td>
             }
             else
             {
@@ -65,116 +64,122 @@
 </table>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const checkAll   = document.getElementById('checkAll');
-    const checkboxes = Array.from(document.querySelectorAll('.check'));
-    const btnView    = document.querySelector('.btn-visualizza');
-    const btnEdit    = document.querySelector('.btn-modifica');
-    const btnDelete  = document.querySelector('.btn-elimina');
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkAll = document.getElementById('checkAll');
+        const checkboxes = Array.from(document.querySelectorAll('.check'));
+        const btnView = document.querySelector('.btn-visualizza');
+        const btnEdit = document.querySelector('.btn-modifica');
+        const btnDelete = document.querySelector('.btn-elimina');
 
-    function getSelectedIds() {
-        return checkboxes.filter(cb => cb.checked).map(cb => cb.value);
-    }
-
-    function updateBtnGroupVisibility() {
-        const count = getSelectedIds().length;
-
-        // Disabilitiamo tutto di default
-        btnView.disabled   = true;
-        btnEdit.disabled   = true;
-        btnDelete.disabled = true;
-        
-
-        if (count === 1) {
-            btnView.disabled   = false;
-            btnEdit.disabled   = false;
-            btnDelete.disabled = false;
+        function getSelectedIds() {
+            return checkboxes.filter(cb => cb.checked).map(cb => cb.value);
         }
-        else if (count > 1) {
-            // solo elimina
-            btnDelete.disabled = false;
+
+        function updateBtnGroupVisibility() {
+            const count = getSelectedIds().length;
+
+            // Disabilitiamo tutto di default
+            btnView.disabled = true;
+            btnEdit.disabled = true;
+            btnDelete.disabled = true;
+
+
+            if (count === 1) {
+                btnView.disabled = false;
+                btnEdit.disabled = false;
+                btnDelete.disabled = false;
+            } else if (count > 1) {
+                // solo elimina
+                btnDelete.disabled = false;
+            }
+            // se count == 0 restano tutti disabilitati
         }
-        // se count == 0 restano tutti disabilitati
-    }
 
-    // Stato iniziale
-    updateBtnGroupVisibility();
-
-    // "Check all"
-    checkAll.addEventListener('change', () => {
-        checkboxes.forEach(cb => cb.checked = checkAll.checked);
+        // Stato iniziale
         updateBtnGroupVisibility();
-    });
 
-    // Singole checkbox
-    checkboxes.forEach(cb => {
-        cb.addEventListener('change', () => {
-            checkAll.checked = checkboxes.every(c => c.checked);
+        // "Check all"
+        checkAll.addEventListener('change', () => {
+            checkboxes.forEach(cb => cb.checked = checkAll.checked);
             updateBtnGroupVisibility();
         });
+
+        // Singole checkbox
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                checkAll.checked = checkboxes.every(c => c.checked);
+                updateBtnGroupVisibility();
+            });
+        });
+
+        btnDelete.addEventListener('click', () => {
+            const ids = getSelectedIds();
+            if (ids.length === 0) {
+                alert("Seleziona almeno un libro da eliminare.");
+                return;
+            }
+
+            if (!confirm(`Sei sicuro di eliminare ${ids.length} libro/i?`)) return;
+
+            document.querySelector('#allId').value = ids.join(',');
+        });
+
+
+        btnEdit.addEventListener('click', () => {
+            const id = getSelectedIds();
+            if (id.length === 0) {
+                alert("Seleziona un utente da modificare.");
+                return;
+            }
+            if (id.length > 1) {
+                alert("Seleziona solo un utente da modificare.");
+                return;
+            }
+            document.querySelector('#idEdit').value = id[0];
+
+        })
+        btnView.addEventListener('click', () => {
+            alert('Click view')
+        })
     });
-
-    btnDelete.addEventListener('click', () => {
-        const ids = getSelectedIds();
-        if (ids.length === 0) {
-            alert("Seleziona almeno un libro da eliminare.");
-            return;
-        }
-
-        if (!confirm(`Sei sicuro di eliminare ${ids.length} libro/i?`)) return;
-
-        document.querySelector('#allId').value = ids.join(',');
-    });
-
-
-    btnEdit.addEventListener('click', () => {
-        const id= getSelectedIds();
-        if (id.length === 0) {
-            alert("Seleziona un utente da modificare.");
-            return;
-        }
-        if (id.length > 1) {
-            alert("Seleziona solo un utente da modificare.");
-            return;
-        }
-        document.querySelector('#idEdit').value = id[0];
-
-    })
-    btnView.addEventListener('click', () => {
-        alert('Click view')
-    })
-});
 </script>
 
 <style>
-    body{
+    body {
         transition: all 0.3s;
     }
+
     table, th, td {
         border-radius: 5px;
-        
+
     }
-    .text-danger{
-        color: #f62525 !important; 
+
+    .text-danger {
+        color: #f62525 !important;
     }
+
     table {
         border-collapse: collapse;
         width: 100%;
     }
+
     th, td {
         padding: 15px;
         border-top: 1px solid #C5B0CD;
         border-bottom: 1px solid #C5B0CD;
     }
+
     th {
         background-color: #415E72;
         color: white;
     }
+
     tr:not(:first-child):hover {
         transition: all 0.3s;
         background-color: #C5B0CD;
     }
-    .btn-group{
+
+    .btn-group {
         margin: 10px 0;
         padding: 10px;
         display: flex;
@@ -183,7 +188,8 @@ document.addEventListener('DOMContentLoaded', function() {
         border: 1px solid #9f9d9d;
         transition: all 0.3s;
     }
-    .btn-visualizza,.btn-modifica,.btn-elimina,.btn-aggiungi{
+
+    .btn-visualizza, .btn-modifica, .btn-elimina, .btn-aggiungi {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         background-color: transparent;
         border: none;
@@ -192,28 +198,34 @@ document.addEventListener('DOMContentLoaded', function() {
         cursor: pointer;
         color: white;
     }
-    .btn-elimina{
+
+    .btn-elimina {
         background-color: #fc5757;
         border: 1px solid #ce3232;
-        
+
     }
-    .btn-aggiungi{
+
+    .btn-aggiungi {
         background-color: #55a855;
         border: 1px solid #4a7a4a;
     }
-    .btn-modifica{
+
+    .btn-modifica {
         background-color: #415E72;
         border: 1px solid #354c5e;
     }
-    .btn-visualizza{
+
+    .btn-visualizza {
         background-color: #415E72;
         border: 1px solid #354c5e;
     }
-    .btn-modifica{
+
+    .btn-modifica {
         background-color: #b6ae53;
         border: 1px solid #918549;
     }
-    .popup{
+
+    .popup {
         position: absolute;
         bottom: 10px;
         right: 10px;
@@ -221,17 +233,20 @@ document.addEventListener('DOMContentLoaded', function() {
         border: 1px solid #C5B0CD;
         color: #17313E;
     }
-    .btn-elimina:disabled{
+
+    .btn-elimina:disabled {
         background-color: #795656;
         border: 1px solid #483b3b;
         cursor: not-allowed;
     }
-    .btn-modifica:disabled{
+
+    .btn-modifica:disabled {
         background-color: #858061;
         border: 1px solid #5e5b52;
         cursor: not-allowed;
     }
-    .btn-visualizza:disabled{
+
+    .btn-visualizza:disabled {
         background-color: #373b3d;
         border: 1px solid #1e1f1f;
         cursor: not-allowed;
@@ -244,18 +259,22 @@ document.addEventListener('DOMContentLoaded', function() {
     .disponibile {
         color: #55a855;
     }
-    .in-prestito,.disponibile, .prenotato{
+
+    .in-prestito, .disponibile, .prenotato {
         padding: 10px;
         border-radius: 50px;
         color: #ffffff;
     }
-    .in-prestito{
+
+    .in-prestito {
         background-color: #7e48ce;
     }
-    .disponibile{
+
+    .disponibile {
         background-color: #55a855;
     }
-    .prenotato{
+
+    .prenotato {
         background-color: #fcc857;
     }
 </style>

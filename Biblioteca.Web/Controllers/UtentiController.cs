@@ -1,26 +1,27 @@
 ﻿using Biblioteca.Core.Models;
-using Microsoft.AspNetCore.Mvc;
 using Biblioteca.Data;
+using Microsoft.AspNetCore.Mvc;
+
 namespace Biblioteca.Web.Controllers;
 
 public class UtentiController : Controller
 {
     private readonly UtenteRepository _utenteRepository;
+
     public UtentiController(IConfiguration configuration)
     {
-        string? connStr = configuration.GetConnectionString("DefaultConnection");
+        var connStr = configuration.GetConnectionString("DefaultConnection");
         _utenteRepository = new UtenteRepository(connStr);
     }
+
     public IActionResult Index()
     {
         ViewBag.Title = "Tutti gli utenti";
         var utenti = _utenteRepository.GetAll();
-        if (utenti != null)
-        {
-            return View(utenti);
-        }
+        if (utenti != null) return View(utenti);
         return View();
     }
+
     [HttpGet]
     public IActionResult Create()
     {
@@ -37,21 +38,19 @@ public class UtentiController : Controller
             TempData["Message"] = "Utente creato correttamente";
             return RedirectToAction("Index");
         }
+
         return View(utente);
     }
-    
+
     [HttpPost]
     public IActionResult Delete(string allId)
     {
         var idList = allId
             .Split(',', StringSplitOptions.RemoveEmptyEntries)
-            .Select(id => int.Parse(id)) 
+            .Select(id => int.Parse(id))
             .ToList();
 
-        foreach (var id in idList)
-        {
-            _utenteRepository.Delete(id);
-        }
+        foreach (var id in idList) _utenteRepository.Delete(id);
         TempData["Message"] = $"{idList.Count} utente/i eliminato/i correttamente.";
         return RedirectToAction("Index");
     }
@@ -60,24 +59,17 @@ public class UtentiController : Controller
     public IActionResult Edit(string idEdit)
     {
         ViewBag.Title = "Modifica un utente";
-    
-        if (!int.TryParse(idEdit, out int id))
-        {
-            return NotFound("ID non valido");
-        }
+
+        if (!int.TryParse(idEdit, out var id)) return NotFound("ID non valido");
 
         var utente = _utenteRepository.GetById(id);
 
-        if (utente == null)
-        {
-            return NotFound("Utente non trovato");
-        }
+        if (utente == null) return NotFound("Utente non trovato");
 
         return View(utente);
     }
 
-    
-    
+
     [HttpPost]
     public IActionResult Edit(Utente utente)
     {
@@ -87,6 +79,7 @@ public class UtentiController : Controller
             TempData["Message"] = "Utente modificato correttamente";
             return RedirectToAction("Index");
         }
+
         return View(utente);
     }
 }

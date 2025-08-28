@@ -5,7 +5,7 @@
     <form method="post" asp-action="AggiungiPrestito">
         <div class="filters">
             <div>
-                <input type="hidden" id="IdLibro" name="idLibro" />
+                <input type="hidden" id="IdLibro" name="idLibro"/>
                 <input type="text" id="inputLibro" class="search" placeholder="Search libri"/>
                 <div class="records" id="recordLibri">
                     @foreach (var libro in Model.libri)
@@ -20,12 +20,13 @@
             </div>
 
             <div>
-                <input type="hidden" id="IdUtente" name="idUtente" />
+                <input type="hidden" id="IdUtente" name="idUtente"/>
                 <input type="text" id="inputUtente" class="search" placeholder="Search utenti"/>
                 <div class="records" id="recordUtenti">
                     @foreach (var utente in Model.utenti)
                     {
-                        <div class="record utente" data-testo="@utente.Cognome.ToLower() @utente.Nome.ToLower() @utente.IdUtente">
+                        <div class="record utente"
+                             data-testo="@utente.Cognome.ToLower() @utente.Nome.ToLower() @utente.IdUtente">
                             <div class="record-title">
                                 @utente.Cognome @utente.Nome <span class="spanId">(@utente.IdUtente)</span>
                             </div>
@@ -36,7 +37,7 @@
         </div>
         <input type="submit" class="submit" value="Aggiungi prestito"/>
     </form>
-    
+
 </div>
 <script>
     function setupFiltro(inputId, recordClass, hiddenId) {
@@ -75,6 +76,7 @@
         display: flex;
         flex-direction: column;
     }
+
     form input, select {
         margin: 10px 0;
         padding: 5px;
@@ -82,57 +84,69 @@
         background-color: transparent;
         border: 1px solid #17313E;
     }
-    form  {
+
+    form {
         width: 100%;
         color: #17313E;
-        
+
     }
-    .filters{
+
+    .filters {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 10px;
     }
+
     .filters > div {
         width: 50%;
     }
-    .submit{
+
+    .submit {
         width: 100%;
         background-color: #17313E;
         color: white;
         padding: 10px;
         cursor: pointer;
         border-radius: 5px;
-        
+
     }
+
     .search {
         width: 100%;
     }
+
     .record-title {
         font-size: 14px;
     }
-    .spanId{
+
+    .spanId {
         font-weight: bold;
     }
-    .records{
+
+    .records {
         height: 300px;
         overflow-y: scroll;
         margin-bottom: 10px;
     }
+
     input[type=submit] {
         background-color: #17313E;
         color: white;
         padding: 10px;
         cursor: pointer;
     }
+
     .danger {
         color: #fa3131;
     }
-    .record{
+
+    .record {
         border-bottom: 1px solid #9f9f9f;
         padding: 10px;
         cursor: pointer;
     }
+
     .container {
         width: 100%;
         display: flex;
@@ -140,6 +154,7 @@
         justify-content: center;
         align-items: center;
     }
+
     @@media screen and (max-width: 768px) {
         form {
             width: 100%;

@@ -5,9 +5,9 @@
 <div class="container">
     <h2>Creazione del Libro</h2>
     <form method="post" asp-action="Create" asp-controller="Libri">
-        
+
         <span>Titolo</span>
-        <input type="text" name="Titolo" required />
+        <input type="text" name="Titolo" required/>
 
         <span>Autore</span>
         <select name="IdAutore" id="selectAutore" required>
@@ -19,7 +19,7 @@
         </select>
 
         <span>Anno</span>
-        <input type="number" name="Anno" required />
+        <input type="number" name="Anno" required/>
 
         <span>Lingua</span>
         <select name="IdLingua" id="selectLingua" required>
@@ -49,12 +49,12 @@
         </select>
 
         <span>Costo</span>
-        <input type="number" step="0.01" name="CostoLibro" required />
+        <input type="number" step="0.01" name="CostoLibro" required/>
 
         <span>Pagine</span>
-        <input type="number" name="Pagine" />
+        <input type="number" name="Pagine"/>
 
-        <input type="submit" value="Crea libro" />
+        <input type="submit" value="Crea libro"/>
     </form>
 </div>
 
@@ -64,6 +64,7 @@
         display: flex;
         flex-direction: column;
     }
+
     form input, select {
         margin: 10px 0;
         padding: 5px;
@@ -71,19 +72,23 @@
         background-color: transparent;
         border: 1px solid #17313E;
     }
+
     form span {
         font-weight: bold;
         color: #17313E;
     }
+
     input[type=submit] {
         background-color: #17313E;
         color: white;
         padding: 10px;
         cursor: pointer;
     }
+
     .danger {
         color: #fa3131;
     }
+
     .container {
         width: 100%;
         display: flex;
@@ -91,6 +96,7 @@
         justify-content: center;
         align-items: center;
     }
+
     @@media screen and (max-width: 768px) {
         form {
             width: 100%;

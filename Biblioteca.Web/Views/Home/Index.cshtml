@@ -14,13 +14,12 @@
     </tr>
     @foreach (var p in Model)
     {
-        
         var expireDate = p.DataPrestito.AddDays(90);
         <tr>
             <td>@p.IdPrestito</td>
             <td>@p.NomeUtente</td>
             <td>@p.CognomeUtente</td>
-            <td>@p.TitoloLibro</td>           
+            <td>@p.TitoloLibro</td>
             <td>@p.DataPrestito.ToString("yyyy-MM-dd HH:mm:ss")</td>
             <td class="tempo-mancante" data-expire="@expireDate.ToString("yyyy-MM-ddTHH:mm:ss")"></td>
         </tr>
@@ -45,10 +44,9 @@
             const ore = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const minuti = Math.floor((diff / (1000 * 60)) % 60);
             const secondi = Math.floor((diff / 1000) % 60);
-            if(giorni<10){
+            if (giorni < 10) {
                 el.classList.add("text-danger");
-            }
-            else{
+            } else {
                 el.classList.remove("text-danger");
             }
             el.innerText = `${giorni}g ${ore}h ${minuti}m ${secondi}s`;
@@ -63,32 +61,38 @@
 </script>
 
 <style>
-    body{
+    body {
         transition: all 0.3s;
     }
+
     table, th, td {
         border-radius: 5px;
-        
+
     }
-    .text-danger{
-        color: #f62525 !important; 
+
+    .text-danger {
+        color: #f62525 !important;
     }
+
     table {
         border-collapse: collapse;
         width: 100%;
     }
+
     th, td {
         padding: 15px;
         border-top: 1px solid #C5B0CD;
         border-bottom: 1px solid #C5B0CD;
     }
+
     th {
         background-color: #415E72;
         color: white;
     }
+
     tr:not(:first-child):hover {
         transition: all 0.3s;
         background-color: #C5B0CD;
     }
-    
+
 </style>
