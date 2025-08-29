@@ -6,12 +6,16 @@ namespace Biblioteca.Web.Controllers;
 
 public class UtentiController : Controller
 {
+    private readonly PrenotazioneRepository _prenotazioniRepository;
+    private readonly PrestitiRepository _prestitiRepository;
     private readonly UtenteRepository _utenteRepository;
 
     public UtentiController(IConfiguration configuration)
     {
         var connStr = configuration.GetConnectionString("DefaultConnection");
         _utenteRepository = new UtenteRepository(connStr);
+        _prestitiRepository = new PrestitiRepository(connStr);
+        _prenotazioniRepository = new PrenotazioneRepository(connStr);
     }
 
     public IActionResult Index()
@@ -82,4 +86,16 @@ public class UtentiController : Controller
 
         return View(utente);
     }
+
+    public IActionResult View(int idView)
+    {
+        var user = _utenteRepository.GetById(idView);
+        if (user == null) return NotFound("Utente non trovato");
+
+        var allPrestiti = _prestitiRepository.GetByIdUtente(idView);
+        var allPrenotati = _prenotazioniRepository.GetByIdUtente(idView);
+        
+        return View((user, allPrestiti, allPrenotati));
+    }
+
 }

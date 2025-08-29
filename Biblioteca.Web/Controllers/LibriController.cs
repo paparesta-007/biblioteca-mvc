@@ -52,6 +52,8 @@ public class LibriController : Controller
 
         foreach (var id in idList)
         {
+            _prestitiRepository.Delete(id);
+            _prenotazioneRepository.Delete(id);
             _libroRepository.Delete(id);
         }
         TempData["Message"] = $"{idList.Count} libro/i eliminato/i correttamente.";

@@ -34,15 +34,17 @@ public class GestioneScambiController : Controller
         var libri = _libroRepository.GetAll();
         var utenti = _utenteRepository.GetAll();
         return View((libri, utenti));
-        ;
+        
     }
 
     [HttpPost]
     public IActionResult AggiungiPrestito(int idLibro, int idUtente)
     {
         // Check if the book is already booked
-        
-        var prestito = _prestitiRepository.GetById(idLibro);
+        var totalePrestiti = _prestitiRepository.TotalePrestiti(idUtente);
+        var totalePrenotazioni = _prenotazioneRepository.TotalePrenotazioni(idUtente);
+        if (totalePrenotazioni + totalePrestiti >= 3) return Content("Limite di prenotazioni raggiunto");
+        var prestito = _prestitiRepository.GetByIdLibro(idLibro);
         if (prestito != null)
         {
             var prenotato = _prenotazioneRepository.GetById(idLibro);
@@ -59,12 +61,10 @@ public class GestioneScambiController : Controller
         }
         else
         {
-            var prenotato = _prenotazioneRepository.GetById(idLibro);
+            var prenotato = _prenotazioneRepository.GetByIdLibro(idLibro);
             if (prenotato != null) return Content("Libro già prenotato");
 
-            var totalePrestiti = _prestitiRepository.TotalePrestiti(idUtente);
-            var totalePrenotazioni = _prenotazioneRepository.TotalePrenotazioni(idUtente);
-            if (totalePrenotazioni + totalePrestiti >= 3) return Content("Limite di prenotazioni raggiunto");
+            
 
             var newPrestito = new Prestiti
             {

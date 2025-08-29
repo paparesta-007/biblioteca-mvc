@@ -1,0 +1,86 @@
+﻿@using Biblioteca.Core.Models
+@model (Utente user, List<Prestiti> allPrestiti, List<Prenotazioni> allPrenotati)
+
+<h2>Utente</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <td>@Model.user.IdUtente</td>
+    </tr>
+    <tr>
+        <th>Nome</th>
+        <td>@Model.user.Nome</td>
+    </tr>
+    <tr>
+        <th>Cognome</th>
+        <td>@Model.user.Cognome</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.user.Email</td>
+    </tr>
+    <tr>
+        <th>Data di nascita</th>
+        <td>@Model.user.DataNascita.ToString("D")</td>
+    </tr>
+</table>
+
+<h2>Prestiti</h2>
+@if (Model.allPrestiti != null && Model.allPrestiti.Any())
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID Prestito</th>
+                <th>ID Utente</th>
+                <th>ID Libro</th>
+                <th>Data Prestito</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var p in Model.allPrestiti)
+        {
+            <tr>
+                <td>@p.IDP</td>
+                <td>@p.IDU</td>
+                <td>@p.IDL</td>
+                <td>@p.DataPrestito.ToString("d")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nessun prestito trovato.</p>
+}
+
+<h2>Prenotazioni</h2>
+@if (Model.allPrenotati != null && Model.allPrenotati.Any())
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID Prenotazione</th>
+                <th>ID Libro</th>
+                <th>ID Utente</th>
+                <th>Data Prenotazione</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var p in Model.allPrenotati)
+        {
+            <tr>
+                <td>@p.IdPrenotazioni</td>
+                <td>@p.IdLibro</td>
+                <td>@p.IdUtente</td>
+                <td>@p.DataPrenotazione.ToString("d")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nessuna prenotazione trovata.</p>
+}

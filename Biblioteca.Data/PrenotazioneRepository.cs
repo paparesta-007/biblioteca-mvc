@@ -49,6 +49,45 @@ public class PrenotazioneRepository(string? connectionString)
         
         return null;
     }
+    
+    public Prenotazioni? GetByIdLibro(int id)
+    {
+        string query = "SELECT * FROM Prenotazioni WHERE IDU = @id";
+        var parameters = new[] { new SqlParameter("@id", id) };
+        using var reader = _database.GetExecuteReader(query, parameters);
+        if (reader.Read())
+        {
+            return new Prenotazioni
+            {
+                IdPrenotazioni = reader.GetInt32(0),
+                IdUtente = reader.GetInt32(1),
+                IdLibro = reader.GetInt32(2),
+                DataPrenotazione = reader.GetDateTime(3)
+            };
+        }
+        
+        return null;
+    }
+    public List<Prenotazioni> GetByIdUtente(int id)
+    {
+        string query = "SELECT * FROM Prenotazioni WHERE IDU = @id";
+        var parameters = new[] { new SqlParameter("@id", id) };
+        var prenotazioni = new List<Prenotazioni>();
+
+        using var reader = _database.GetExecuteReader(query, parameters);
+        while (reader.Read())
+        {
+            prenotazioni.Add(new Prenotazioni
+            {
+                IdPrenotazioni = reader.GetInt32(0),
+                IdUtente = reader.GetInt32(1),
+                IdLibro = reader.GetInt32(2),
+                DataPrenotazione = reader.GetDateTime(3)
+            });
+        }
+
+        return prenotazioni;
+    }
 
     public int TotalePrenotazioni(int idUtente)
     {

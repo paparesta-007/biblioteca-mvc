@@ -4,7 +4,11 @@
 <h2>Tutti gli utenti</h2>
 
 <div class="btn-group">
+    <form asp-action="Create">
+        <button type="submit" class="btn-aggiungi">AGGIUNGI</button>
+    </form>
     <form asp-action="View">
+        <input type="hidden" id="idView" name="idView" value=""/>
         <button type="submit" class="btn-visualizza">VISUALIZZA</button>
     </form>
     <form asp-action="Edit" method="get">
@@ -119,7 +123,17 @@
 
         })
         btnView.addEventListener('click', () => {
-            alert('Click view')
+            const id = getSelectedIds();
+            if (id.length === 0) {
+                alert("Seleziona un utente da visualizzare.");
+                return;
+            }
+            if (id.length > 1) {
+                alert("Seleziona solo un utente da visualizzare.");
+                return;
+            }
+            document.querySelector('#idView').value = id[0];
+            
         })
     });
 </script>
