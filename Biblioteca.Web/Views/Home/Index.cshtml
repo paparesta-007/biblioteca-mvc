@@ -1,7 +1,7 @@
 ﻿@using Biblioteca.Core.Models
-@model List<PrestitiViewModel>
+@model (List<PrenotazioniViewModel> prenotazioni, List<PrestitiViewModel> prestiti)
 
-<h2>Tutti i libri in prestito ora</h2>
+<h3>Tutti i libri in prestito ora</h3>
 
 <table>
     <tr>
@@ -12,7 +12,7 @@
         <th>Data Prestito</th>
         <th>Tempo mancante</th>
     </tr>
-    @foreach (var p in Model)
+    @foreach (var p in Model.prestiti)
     {
         var expireDate = p.DataPrestito.AddDays(90);
         <tr>
@@ -22,6 +22,30 @@
             <td>@p.TitoloLibro</td>
             <td>@p.DataPrestito.ToString("yyyy-MM-dd HH:mm:ss")</td>
             <td class="tempo-mancante" data-expire="@expireDate.ToString("yyyy-MM-ddTHH:mm:ss")"></td>
+        </tr>
+    }
+</table>
+
+<h3>Tutti i libri prenotati ora</h3>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Titolo</th>
+        <th>Data prenotazione</th>
+    </tr>
+    @foreach (var p in Model.prenotazioni)
+    {
+        var expireDate = p.DataPrenotazione.AddDays(90);
+        <tr>
+            <td>@p.IdPrenotazione</td>
+            <td>@p.NomeUtente</td>
+            <td>@p.CognomeUtente</td>
+            <td>@p.TitoloLibro</td>
+            <td>@p.DataPrenotazione.ToString("yyyy-MM-dd HH:mm:ss")</td>
+           
         </tr>
     }
 </table>
@@ -77,10 +101,11 @@
     table {
         border-collapse: collapse;
         width: 100%;
+        margin-bottom: 20px;
     }
 
     th, td {
-        padding: 15px;
+        padding: 12px;
         border-top: 1px solid #C5B0CD;
         border-bottom: 1px solid #C5B0CD;
     }

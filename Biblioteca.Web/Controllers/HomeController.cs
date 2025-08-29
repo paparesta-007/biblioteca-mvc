@@ -10,11 +10,13 @@ namespace Biblioteca.Web.Controllers;
 public class HomeController : Controller
 {
     private readonly PrestitiRepository _prestitirepo;
+    private readonly PrenotazioneRepository _prenotazioniRepository;
 
     public HomeController(IConfiguration configuration)
     {
         var connStr = configuration.GetConnectionString("DefaultConnection");
         _prestitirepo = new PrestitiRepository(connStr);
+        _prenotazioniRepository = new PrenotazioneRepository(connStr);
     }
 
     public IActionResult Index()
@@ -29,9 +31,9 @@ public class HomeController : Controller
                 _prestitirepo.Delete(pre.IdPrestito);
                 eliminati.Add(pre);
             }
-
+        var prenotazioni = _prenotazioniRepository.GetPrenotazioniDettagliati();
         if (eliminati.Any()) GeneraReportWord(eliminati);
-        return View(prestiti);
+        return View((prenotazioni, prestiti));
     }
 
     private void GeneraReportWord(List<PrestitiViewModel> eliminati)

@@ -49,7 +49,33 @@ public class PrenotazioneRepository(string? connectionString)
         
         return null;
     }
-    
+    public List<PrenotazioniViewModel> GetPrenotazioniDettagliati()
+    {
+        var lista = new List<PrenotazioniViewModel>();
+        const string query = @"
+            SELECT p.IDPre, p.DataPrenot, u.Nome, u.Cognome, l.Titolo, l.IdLibro, u.ID
+            FROM Prenotazioni p
+         JOIN Utenti u ON p.IDU = u.ID
+         JOIN Libri l ON p.IDL = l.IdLibro";
+
+        using var reader = _database.GetExecuteReader(query);
+        while (reader.Read())
+        {
+            lista.Add(new PrenotazioniViewModel()
+            {
+                IdPrenotazione = reader.GetInt32(0),
+                DataPrenotazione = reader.GetDateTime(1),
+                NomeUtente = reader.GetString(2),
+                    
+                CognomeUtente = reader.GetString(3),
+                TitoloLibro = reader.GetString(4),
+                IdUtente = reader.GetInt32(5),
+                IdLibro = reader.GetInt32(6)
+            });
+        }
+
+        return lista;
+    }
     public Prenotazioni? GetByIdLibro(int id)
     {
         string query = "SELECT * FROM Prenotazioni WHERE IDU = @id";
