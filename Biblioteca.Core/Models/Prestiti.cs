@@ -2,7 +2,7 @@
 
 namespace Biblioteca.Core.Models;
 
-public class Prestiti : IEnumerable
+public class Prestiti 
 {
     public int IDP { get; set; }
     public int IDU { get; set; }
